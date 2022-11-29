@@ -10,20 +10,23 @@
         <hr>
         <h2> Preprocessing </h2>
         <pre>
-            1. All-in-one analysis
+            1. All-in-one
             
             <label for="guppy_protocol"> raw signal basecalling - decomplexing - debarcoding - alignment:</label>
             <div id="myDiv">
                 guppy_basecaller -c configuration_file  --barcode_kits library -i input_fast5 -s orgnized_output --align_ref reference_genome  -x GPU_setting --records_per_fastq 0 --compress_fastq
             </div>
-            <label for="format converting"> file merging and converting:</label>
+            
+            2. Bam Generation and Conversion
+            
+            <label for="sam2bam"> sam2bam:</label>
             <div id="myDiv">
                 samtools view -H *bam > allSeq.sam
                 find ./ -name \*.bam -exec samtools view {} \; >> allSeq.sam
                 samtools view -bh allSeq.sam > allSeq.bam
             </div>
             
-            2. Track Generation and Conversion
+            3. Other format Generation
             
             <label for="fasta2bam&cram">fasta2bam&cram:</label>
             <div id="myDiv">
